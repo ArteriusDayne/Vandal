@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Vandal - Keeping Your Neighborhood Safe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="./favicon.ico"> 
+  
+  <!-- JQuery Mobile Framework + Font Awesome-->
+  <link rel="stylesheet" href="http://nativedroid.godesign.ch/demo/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+  <link rel="stylesheet" href="vendor/waves/waves.min.css" />
+  <link rel="stylesheet" href="vendor/wow/animate.css" />
+  <link rel="stylesheet" href="css/nativedroid2.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+  
+  <!-- Google Maps API -->
+  <script src="http://maps.googleapis.com/maps/api/js?=AIzaSyDtr9BLsVRG8mRvuaKVvOlcnYu2RlJrCeM"></script>
+  <script>
+    function initialize() {
+        var mapProp = {
+            center:new google.maps.LatLng(40.7,-78),
+            zoom:5,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            
+            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    }
+            
+            google.maps.event.addDomListener(window, 'load', initialize);
+            
+  </script>
+  
+</head>
+ 
+<body>
+
+        
+        <div data-role="page" data-theme='a'>
+            <div data-role="header" data-position="fixed" class="wow fadeIn">
+                <a href="#bottomsheetblock" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a>
+                <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a>
+                <h1 class="wow fadeIn" data-wow-delay='0.4s'>Vandal</h1>
+            </div>
+            
+            <div id="googleMap" style="width:900px;height:684px;"></div>
+ 
+ 
+            <div data-role="content">
+ 
+            </div>
+ 
+        </div>
+</body>
+ 
+</html>

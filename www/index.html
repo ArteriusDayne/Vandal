@@ -19,15 +19,18 @@
   <link rel="stylesheet" href="vendor/waves/waves.min.css" />
   <link rel="stylesheet" href="vendor/wow/animate.css" />
   <link rel="stylesheet" href="css/nativedroid2.css" />
+  <link rel="stylesheet" href="css/nativedroid2.color.light-blue.css" />
 
   
   <!-- Google Maps API -->
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBS2gksPITHAt3T1zso_Z5xm_KE_W46I5E"></script>
+  <!--
   <script>
     function initialize() {
         var mapProp = {
-            center:new google.maps.LatLng(40.72,-74.17),
-            zoom:13,
+            center:new google.maps.LatLng(40.742,-74.179),
+            zoom:17,
+            tilt:45,
             mapTypeId:google.maps.MapTypeId.ROADMAP
             };
             
@@ -37,6 +40,47 @@
             google.maps.event.addDomListener(window, 'load', initialize);
             
   </script>
+  -->
+  
+  <script>
+    function initMap() {
+        var customMapType = new google.maps.StyledMapType([
+            {
+              stylers: [
+                {hue: '#890000'},
+                {visibility: 'simplified'},
+                {gamma: 0.5},
+                {weight: 0.5}
+              ]
+            },
+            {
+              elementType: 'labels',
+              stylers: [{visibility: 'off'}]
+            },
+            {
+              featureType: 'water',
+              stylers: [{color: '#890000'}]
+            }
+          ], {
+            name: 'Custom Style'
+        });
+        
+        var customMapTypeId = 'custom_style';
+
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp {
+          zoom: 12,
+          center: {lat: 40.674, lng: -73.946},  // Brooklyn.
+          mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, customMapTypeId]
+          }
+        });
+
+        map.mapTypes.set(customMapTypeId, customMapType);
+        map.setMapTypeId(customMapTypeId);
+      }
+      </script>
+  
+  
   
 </head>
  
@@ -47,32 +91,110 @@
             
             <!-- Header + Left & Right Buttons -->
             <div data-role="header" data-position="fixed" class="wow fadeIn" style="width:100%; height:7%;">
-                <a href="#rightradio" class="ui-btn ui-btn-right wow fadeIn" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a> <!-- right button -->
+                <a href="#popupDialog" class="ui-btn ui-btn-right wow fadeIn" data-rel="popup" data-position-to="window" data-role="button" data-inline="true" data-transition="pop" data-wow-delay='1.2s'><i class="zmdi zmdi-more-vert"></i></a> <!-- right button -->
                 <a href="#leftpanel" class="ui-btn ui-btn-left wow fadeIn" data-wow-delay='0.8s'><i class="zmdi zmdi-menu"></i></a> <!-- left button -->
                 <h1 class="wow fadeIn" data-wow-delay='0.4s'>Vandal</h1>
             </div>
                 
-            <!-- Right Card List -->
+            
             <!--
-            <fieldset data-role="controlgroup" id="rightradio">
+            <script type="text/javascript">
+                $(function () {
+                $("#dialog").dialog({
+                    modal: true,
+                    autoOpen: false,
+                    title: "jQuery Dialog",
+                    width: 300,
+                    height: 150
+                });
+                
+                $("#btnShow").click(function () {
+                $('#dialog').dialog('open');
+                });
+                });
+            </script>
+            
+            <input type="button" id="btnShow" value="Show Popup" />
+            
+            
+                        <!-- Right Card List -->
+
+            <div data-role="popup" id="popupDialog">
+            <div data-role="header">
+                <h1 class='nd-title'>Choose Map Type</h1>
+            </div>
+
+            <div data-role="content">
+            <fieldset>
                 <legend>Radio Buttons</legend>
                 <input type="radio" name="radio-choice-1" id="radio-choice-1b" value="choice-1" checked="checked">
-                <label for="radio-choice-1b">Cat</label>
+                <label for="radio-choice-1b">Roadmap</label>
                 <input type="radio" name="radio-choice-1" id="radio-choice-2b" value="choice-2">
-                <label for="radio-choice-2b">Dog</label>
+                <label for="radio-choice-2b">Satellite</label>
                 <input type="radio" name="radio-choice-1" id="radio-choice-3b" value="choice-3">
-                <label for="radio-choice-3b">Hamster</label>
+                <label for="radio-choice-3b">Hybrid</label>
                 <input type="radio" name="radio-choice-1" id="radio-choice-4b" value="choice-4">
-                <label for="radio-choice-4b">Lizard</label>
+                <label for="radio-choice-4b"></label>
             </fieldset>
+                
+                
+                <script type="text/javascript">
+                    $("#radio-choice-1b, #radio-choice-2b, #radio-choice-3b, #radio-choice-3b").change(function () {
+                        
+                        if ($("#radio-choice-1b").attr("checked")) {
+                            $("#radio-choice-1bedit:input").removeAttr("disabled");
+
+                        }
+                        
+                        else {
+                            $("#radio-choice-1bedit:input").attr("disabled", "disabled");
+                        }
+                        
+                        if ($("#radio-choice-2b").attr("checked")) {
+                            $("#radio-choice-2bedit:input").removeAttr("disabled");
+                            var mapProp = {
+                                mapTypeId:google.maps.MapTypeId.Satellite
+                            };
+                        }
+                        
+                        else {
+                            $("#radio-choice-2bedit:input").attr("disabled", "disabled");
+                        }
+                        
+                        if ($("#radio-choice-3b").attr("checked")) {
+                            $("#radio-choice-3bedit:input").removeAttr("disabled");
+
+                        }
+                        
+                        else {
+                            $("#radio-choice-3bedit:input").attr("disabled", "disabled");
+                        }
+                        
+                        if ($("#radio-choice-4b").attr("checked")) {
+                            $("#radio-choice-4bedit:input").removeAttr("disabled");
+
+                        }
+                        
+                        else {
+                            $("#radio-choice-4bedit:input").attr("disabled", "disabled");
+                        }
+                        
+                        
+                        
+                    });
+                </script>
+                
+            </div>
+                
+            </div>    
             
-            -->
+            
             
             <!-- Left Panel -->
             <div data-role="panel" id="leftpanel" data-display="overlay" data-position-fixed="true" >
 
                 <div class='nd2-sidepanel-profile wow fadeInDown'>
-                    <img class='profile-background' src="//lorempixel.com/400/200/abstract/2/" />
+                    <img class='profile-background' src="img/bgblue.jpg" />
                     <div class="row">
                         <div class='col-xs-4 center-xs'>
                             <div class='box'>

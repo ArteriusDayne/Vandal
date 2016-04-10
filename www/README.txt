@@ -1,0 +1,2 @@
+The app looks fine when I'm writing it in my IDE and running (as shown in the pictures) but does not work when attempting to run the index.html file.
+My first thought was that the script source links were messed up, but I can't seem to find any error or mistake.  

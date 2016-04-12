@@ -4,6 +4,9 @@
     <head>
         <title>Vandal - Keeping Your Neighborhood Safe</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
         <!-- Favicon -->
         <link rel="icon" type="image/x-icon" href="favicon/Vandal.ico"> 
@@ -15,11 +18,12 @@
         <script src="js/jquery-ui.min.js"></script>
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
         <script src="font-awesome/fontawesome-markers.min.js"></script>
-        
+
         <!-- Backbone JS + Underscore -->
         <script src="js/backbone.js"></script>
         <script src="js/underscore.js"></script>
-       
+        <script src="js/main.js"></script>
+        <script src="js/jqm-config.js"></script>
 
         <!-- NativeDroid2 -->
         <script src="vendor/waves/waves.min.js"></script>
@@ -30,11 +34,6 @@
         <link rel="stylesheet" href="vendor/wow/animate.css" />
         <link rel="stylesheet" href="css/nativedroid2.css" />
         <link rel="stylesheet" href="css/nativedroid2.color.light-blue.css" />
-        
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-
 
         <!-- Google Maps API -->
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBS2gksPITHAt3T1zso_Z5xm_KE_W46I5E"></script>
@@ -171,6 +170,26 @@
                 initAutocomplete();
             });
 
+
+        </script>
+
+        <script type="text/template" id="home">
+
+            <div data-role="header">
+            <h1>Backbone.js + jQuery Mobile</h1>
+            </div>
+
+            <div data-role="content">
+            <h3>Application Template for using Backbone.js and jQuery Mobile.</h3>
+            <p>Backbone.js is used for code organization (Models, Views) and "routing".</p>
+            <p>jQuery Mobile is used for its mobile styles and widgets. The routing and navigation capabilities of jQuery Mobile are disbled to let Backbone.js handle these requirements.</p>
+            <p>This is the Home page. It was created dynamically using an underscore.js template.</p>
+            <p>Navigate to:</p>
+            <ul data-role="listview"  data-inset="true">
+            <li><a href="#page1">Page 1</a></li>
+            <li><a href="#page2">Page 2</a></li>
+            </ul>
+            </div>
 
         </script>
 
@@ -321,6 +340,7 @@
             </div>
 
         </div>
+
     </body>
 
 </html>
